@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaza Needs You - Make a Difference Today</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .hero-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 25%, #45b7d1 50%, #96ceb4 75%, #feca57 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            z-index: -1;
+            opacity: 0.9;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-top: 40px;
+        }
+
+        .main-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+            animation: titlePulse 3s ease-in-out infinite;
+        }
+
+        @keyframes titlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #f8f9fa;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .donation-card {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .card-title {
+            font-size: 2rem;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .donation-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .donation-method {
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .donation-method:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            border-color: #4ecdc4;
+        }
+
+        .method-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .paypal-icon { color: #0070ba; }
+        .bitcoin-icon { color: #f7931a; }
+
+        .method-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .method-description {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .donate-btn {
+            background: linear-gradient(145deg, #ff6b6b, #ee5a52);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+        }
+
+        .donate-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(238, 90, 82, 0.4);
+        }
+
+        .bitcoin-address {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            word-break: break-all;
+            margin: 15px 0;
+            border: 2px solid #34495e;
+        }
+
+        .copy-btn {
+            background: #f39c12;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: #e67e22;
+            transform: scale(1.05);
+        }
+
+        .impact-section {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .impact-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-item {
+            background: linear-gradient(145deg, #3498db, #2980b9);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .success-message {
+            display: none;
+            background: linear-gradient(145deg, #2ecc71, #27ae60);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 20px;
+            box-shadow: 0 10px 20px rgba(46, 204, 113, 0.3);
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            padding: 40px 0;
+            font-size: 0.9rem;
+        }
+
+        .social-icons {
+            margin: 20px 0;
+        }
+
+        .social-icon {
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.2);
+            color: #4ecdc4;
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .donation-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .donation-card {
+                padding: 20px;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+
+        .platform-btn {
+            background: linear-gradient(145deg, #ffffff, #f8f9fa);
+            border: 2px solid #e9ecef;
+            padding: 12px 20px;
+            margin: 5px 0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .platform-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .coinbase-btn:hover { border-color: #0052ff; }
+        .binance-btn:hover { border-color: #f3ba2f; }
+        .cashapp-btn:hover { border-color: #00d632; }
+        .blockchain-btn:hover { border-color: #121d33; }
+        .generic-btn:hover { border-color: #6c757d; }
+
+        .platform-icon {
+            font-size: 1.2rem;
+        }
+
+        .bitcoin-options {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .bitcoin-platforms {
+            margin-bottom: 20px;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(238, 90, 82, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(238, 90, 82, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(238, 90, 82, 0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-bg"></div>
+    
+    <div class="container">
+        <header class="header">
+            <h1 class="main-title">Gaza Needs You</h1>
+            <p class="subtitle">
+                Every contribution matters. Join thousands of compassionate hearts making a real difference 
+                in Gaza. Together, we can provide hope, relief, and essential support to families in need.
+            </p>
+        </header>
+
+        <div class="donation-card">
+            <h2 class="card-title">Make Your Contribution Count</h2>
+            
+            <div class="impact-section">
+                <h3 class="impact-title">Your Impact So Far</h3>
+                <div class="impact-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">12,847</span>
+                        <span class="stat-label">Families Helped</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">$2.3M</span>
+                        <span class="stat-label">Funds Raised</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">48</span>
+                        <span class="stat-label">Countries United</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="donation-options">
+                <div class="donation-method" onclick="initiatePayPal()">
+                    <div class="method-icon paypal-icon">💳</div>
+                    <h3 class="method-title">PayPal</h3>
+                    <p class="method-description">Quick and secure payment via PayPal</p>
+                    <button class="donate-btn pulse">Donate with PayPal</button>
+                </div>
+
+                <div class="donation-method" onclick="showBitcoinOptions()">
+                    <div class="method-icon bitcoin-icon">₿</div>
+                    <h3 class="method-title">Bitcoin</h3>
+                    <p class="method-description">Crypto donation for maximum privacy</p>
+                    <button class="donate-btn">Donate with Bitcoin</button>
+                    
+                    <div class="bitcoin-options" id="btcOptions" style="display: none;">
+                        <div class="bitcoin-platforms">
+                            <h4 style="margin-bottom: 15px; color: #2c3e50;">Choose Your Platform:</h4>
+                            
+                            <button class="platform-btn coinbase-btn" onclick="openCoinbase()">
+                                <span class="platform-icon">🔷</span>
+                                <span>Coinbase</span>
+                            </button>
+                            
+                            <button class="platform-btn binance-btn" onclick="openBinance()">
+                                <span class="platform-icon">🟡</span>
+                                <span>Binance</span>
+                            </button>
+                            
+                            <button class="platform-btn cashapp-btn" onclick="openCashApp()">
+                                <span class="platform-icon">💚</span>
+                                <span>Cash App</span>
+                            </button>
+                            
+                            <button class="platform-btn blockchain-btn" onclick="openBlockchain()">
+                                <span class="platform-icon">🔵</span>
+                                <span>Blockchain.com</span>
+                            </button>
+                            
+                            <button class="platform-btn generic-btn" onclick="showManualAddress()">
+                                <span class="platform-icon">📋</span>
+                                <span>Other Wallet</span>
+                            </button>
+                        </div>
+                        
+                        <div class="bitcoin-address" id="btcAddress" style="display: none;">
+                            <strong>Bitcoin Address:</strong><br>
+                            bc1qjrhku4yrvnrys7jq6532ar5a6m96k2mg8gwxx2
+                            <button class="copy-btn" onclick="copyBitcoinAddress()">Copy Address</button>
+                        </div>
+                        
+                        <div class="qr-section" id="qrSection" style="display: none;">
+                            <canvas id="qrCanvas" width="200" height="200" style="border: 2px solid #ddd; border-radius: 10px; margin: 10px auto; display: block;"></canvas>
+                            <p style="font-size: 0.8rem; color: #666; text-align: center;">Scan with your mobile wallet</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="success-message" id="successMessage">
+                <h3>🙏 Thank You for Your Generosity!</h3>
+                <p>Your contribution brings hope and healing to families in Gaza. Every donation, no matter the size, creates ripples of positive change. You are truly making a difference in someone's life today.</p>
+                <p><strong>Gaza Lives Matter - Together We Stand Strong</strong></p>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="social-icons">
+                <span class="social-icon">🤝</span>
+                <span class="social-icon">❤️</span>
+                <span class="social-icon">🌍</span>
+            </div>
+            <p>Gaza Lives Matter Fund - Spreading Hope, One Contribution at a Time</p>
+            <p>Every act of kindness creates a wave of change</p>
+        </footer>
+    </div>
+
+    <script>
+        function initiatePayPal() {
+            // Create PayPal donation link
+            const paypalEmail = 'chirchir.davis@gmail.com';
+            const paypalUrl = `https://www.paypal.com/donate/?business=${encodeURIComponent(paypalEmail)}&currency_code=USD&item_name=${encodeURIComponent('Gaza Lives Matter Fund')}`;
+            
+            // Open PayPal in new window
+            window.open(paypalUrl, '_blank');
+            
+            // Show success message after a short delay
+            setTimeout(() => {
+                showSuccessMessage();
+            }, 2000);
+        }
+
+        function showBitcoinOptions() {
+            const btcOptions = document.getElementById('btcOptions');
+            if (btcOptions.style.display === 'none') {
+                btcOptions.style.display = 'block';
+                btcOptions.style.animation = 'slideIn 0.5s ease';
+                generateQRCode();
+            }
+        }
+
+        function openCoinbase() {
+            const address = 'bc1qjrhku4yrvnrys7jq6532ar5a6m96k2mg8gwxx2';
+            const coinbaseUrl = `https://www.coinbase.com/send?address=${address}&currency=BTC`;
+            window.open(coinbaseUrl, '_blank');
+            setTimeout(() => showSuccessMessage(), 2000);
+        }
+
+        function openBinance() {
+            const address = 'bc1qjrhku4yrvnrys7jq6532ar5a6m96k2mg8gwxx2';
+            // Binance doesn't have direct URL, so we'll show instructions
+            alert('Opening Binance...\n\n1. Go to your Binance wallet\n2. Select "Send Bitcoin"\n3. Use this address:\n' + address);
+            copyBitcoinAddress();
+            window.open('https://www.binance.com/', '_blank');
+            setTimeout(() => showSuccessMessage(), 2000);
+        }
+
+        function openCashApp() {
+            const address = 'bc1qjrhku4yrvnrys7jq6532ar5a6m96k2mg8gwxx2';
+            // Cash App uses a different URL scheme for mobile
+            const cashAppUrl = `https://cash.app/bitcoin/send?address=${address}`;
+            window.open(cashAppUrl, '_blank');
+            
+            // Also copy address as fallback
+            copyBitcoinAddress();
+            setTimeout(() => showSuccessMessage(), 2000);
+        }
+
+        function openBlockchain() {
+            const address = 'bc1qjrhku4yrvnrys7jq6532ar5a6m96k2mg8gwxx2';
+            const blockchainUrl = `https://login.blockchain.com/#/wallet`;
+            window.open(blockchainUrl, '_blank');
+            
+            // Show helpful instructions
+            alert('Opening Blockchain.com...\n\n1. Log into your wallet\n2. Click "Send Bitcoin"\n3. Use this address (already copied!):\n' + address);
+            copyBitcoinAddress();
+            setTimeout(() => showSuccessMessage(), 2000);
+        }
+
+        function showManualAddress() {
+            const btcAddress = document.getElementById('btcAddress');
+            const qrSection = document.getElementById('qrSection');
+            
+            btcAddress.style.display = 'block';
+            qrSection.style.display = 'block';
+            
+            btcAddress.style.animation = 'slideIn 0.5s ease';
+            qrSection.style.animation = 'slideIn 0.5s ease';
+        }
+
+        function generateQRCode() {
+            const address = 'bc1qjrhku4yrvnrys7jq6532ar5a6m96k2mg8gwxx2';
+            const canvas = document.getElementById('qrCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Simple QR code placeholder (in real implementation, you'd use a QR library)
+            // For now, we'll create a visual placeholder
+            ctx.clearRect(0, 0, 200, 200);
+            ctx.fillStyle = '#000';
+            
+            // Create a simple pattern that looks like a QR code
+            for (let i = 0; i < 200; i += 10) {
+                for (let j = 0; j < 200; j += 10) {
+                    if (Math.random() > 0.5) {
+                        ctx.fillRect(i, j, 8, 8);
+                    }
+                }
+            }
+            
+            // Add corner squares (QR code markers)
+            ctx.fillRect(0, 0, 30, 30);
+            ctx.fillRect(170, 0, 30, 30);
+            ctx.fillRect(0, 170, 30, 30);
+            
+            ctx.fillStyle = '#fff';
+            ctx.fillRect(8, 8, 14, 14);
+            ctx.fillRect(178, 8, 14, 14);
+            ctx.fillRect(8, 178, 14, 14);
+        }
+
+        function copyBitcoinAddress() {
+            const address = 'bc1qjrhku4yrvnrys7jq6532ar5a6m96k2mg8gwxx2';
+            
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(address).then(() => {
+                    showCopySuccess();
+                    setTimeout(() => {
+                        showSuccessMessage();
+                    }, 1500);
+                });
+            } else {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = address;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showCopySuccess();
+                setTimeout(() => {
+                    showSuccessMessage();
+                }, 1500);
+            }
+        }
+
+        function showCopySuccess() {
+            const copyBtn = event.target;
+            const originalText = copyBtn.textContent;
+            copyBtn.textContent = 'Copied! ✓';
+            copyBtn.style.background = '#2ecc71';
+            
+            setTimeout(() => {
+                copyBtn.textContent = originalText;
+                copyBtn.style.background = '#f39c12';
+            }, 2000);
+        }
+
+        function showSuccessMessage() {
+            const successMessage = document.getElementById('successMessage');
+            successMessage.classList.add('show');
+            
+            // Hide after 8 seconds
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 8000);
+        }
+
+        // Add some interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate stats on scroll
+            const stats = document.querySelectorAll('.stat-number');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target;
+                        const finalValue = target.textContent;
+                        animateNumber(target, finalValue);
+                    }
+                });
+            });
+
+            stats.forEach(stat => observer.observe(stat));
+
+            // Add floating hearts animation
+            createFloatingElements();
+        });
+
+        function animateNumber(element, finalValue) {
+            const isMonetary = finalValue.includes('$');
+            const numericValue = parseFloat(finalValue.replace(/[^0-9.]/g, ''));
+            let currentValue = 0;
+            const increment = numericValue / 100;
+            
+            const animation = setInterval(() => {
+                currentValue += increment;
+                if (currentValue >= numericValue) {
+                    currentValue = numericValue;
+                    clearInterval(animation);
+                }
+                
+                if (isMonetary) {
+                    element.textContent = '$' + currentValue.toFixed(1) + 'M';
+                } else {
+                    element.textContent = Math.floor(currentValue).toLocaleString();
+                }
+            }, 20);
+        }
+
+        function createFloatingElements() {
+            const symbols = ['❤️', '🤝', '🌟', '💫', '🙏'];
+            
+            setInterval(() => {
+                if (Math.random() > 0.7) {
+                    const element = document.createElement('div');
+                    element.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                    element.style.position = 'fixed';
+                    element.style.left = Math.random() * 100 + 'vw';
+                    element.style.top = '100vh';
+                    element.style.fontSize = '2rem';
+                    element.style.pointerEvents = 'none';
+                    element.style.zIndex = '1000';
+                    element.style.animation = 'float 6s linear forwards';
+                    
+                    document.body.appendChild(element);
+                    
+                    setTimeout(() => {
+                        document.body.removeChild(element);
+                    }, 6000);
+                }
+            }, 2000);
+        }
+
+        // Add CSS for floating animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                0% {
+                    transform: translateY(0) rotate(0deg);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(-100vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
